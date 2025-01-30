@@ -1,0 +1,121 @@
+{
+  "author": "Flywheel",
+  "cite": "https://microsoft.github.io/presidio/",
+  "command": "python run.py",
+  "config": {
+    "Assignees": {
+      "description": "Comma separated ist of user emails to assign ReaderTasks. If empty, gear will fail.",
+      "type": "string",
+      "optional": true
+    },
+    "Baseline Operating Mode": {
+      "default": "Detection Only",
+      "description": "Comma separated ist of Flywheel user emails to assign ReaderTasks. If empty & Operating Mode=Detection+ReaderTasks, gear will fail. e.g. bob@flywheel.io, mary@flywheel.io",
+      "enum": [
+        "Detection Only",
+        "Detection+ReaderTasks",
+        "Dynamic PHI Redaction",
+        "RedactAllText"
+      ],
+      "type": "string"
+    },
+    "Bounding Box Fill": {
+      "default": "contrast",
+      "description": "Color to fill bounding box. Options: contrast, background",
+      "type": "string"
+    },
+    "Debug": {
+      "default": false,
+      "description": "Log debug messages",
+      "type": "boolean"
+    },
+    "Entities to Find": {
+      "default": "PERSON,DATE_TIME,LOCATION,AGE,ID,PROFESSION,ORGANIZATION,PHONE_NUMBER,ZIP,USERNAME,EMAIL",
+      "description": "List of entities the gear should look for. Current list shows all possible entities; remove any entity not needed.",
+      "type": "string"
+    },
+    "Entity Frequency Threshold": {
+      "default": 30,
+      "description": "Only applied on multi-frame files, frequency_threshold specifies the minimum number of times as a percentage (0 to 100) an entity must appear across frames to be included in all frames. Default=30. Does not impact single frame files.",
+      "maximum": 100,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "Transformer Score Threshold": {
+      "default": 30,
+      "description": "The minimum confidence score (0 to 100) required for an entity identified by the transformer to be considered PHI. Default=30",
+      "maximum": 100,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "Use DICOM Metadata": {
+      "default": false,
+      "description": "If true, creates a regex recognizer from DICOM metadata to facilitate identifying PHI text in DICOM pixel data. Default=False",
+      "type": "boolean"
+    },
+    "apikey_path_prefix": {
+      "description": "The instance specific AWS parameter gearbot path prefix",
+      "type": "string",
+      "Optional": true
+    }
+  },
+  "custom": {
+    "flywheel": {
+      "classification": {
+        "function": ["Curation"],
+        "modality": ["Any"],
+        "organ": ["Any"],
+        "species": ["Human"],
+        "therapeutic_area": ["Any"]
+      },
+      "show-job": true,
+      "suite": "Curation"
+    },
+    "gear-builder": {
+      "category": "converter",
+      "image": "flywheel/nacc-presidio-image-redactor:0.1.3_nacc"
+    }
+  },
+  "description": "This gear utilizes Mircrosoft's open source Presidio SDK to scan images for potential Personal Identifiable Information (PII), report on PII findings, and redact PII contained within pixel data.",
+  "environment": {
+    "FLYWHEEL": "/flywheel/v0",
+    "GPG_KEY": "E3FF2839C048B25C084DEBE9B26995E310250568",
+    "LANG": "C.UTF-8",
+    "PATH": "/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+    "PWD": "/flywheel/v0",
+    "PYTHON_GET_PIP_SHA256": "dfe9fd5c28dc98b5ac17979a953ea550cec37ae1b47a5116007395bfacff2ab9",
+    "PYTHON_GET_PIP_URL": "https://github.com/pypa/get-pip/raw/dbf0c85f76fb6e1ab42aa672ffca6f0a675d9ee4/public/get-pip.py",
+    "PYTHON_PIP_VERSION": "23.0.1",
+    "PYTHON_SETUPTOOLS_VERSION": "58.1.0",
+    "PYTHON_VERSION": "3.9.19"
+  },
+  "inputs": {
+    "api-key": {
+      "base": "api-key",
+      "read-only": false
+    },
+    "bbox_coords": {
+      "base": "file",
+      "description": "Json containing the bounding box coordinates of a previous scanning run.",
+      "optional": true,
+      "type": {
+        "enum": ["source code"]
+      }
+    },
+    "image_file": {
+      "base": "file",
+      "description": "A dicom file or zipped dicom series.",
+      "optional": false,
+      "type": {
+        "enum": ["archive", "dicom"]
+      }
+    }
+  },
+  "label": "NACC Presidio Image Redactor",
+  "license": "MIT",
+  "maintainer": "Flywheel <support@flywheel.io>",
+  "name": "nacc-presidio-image-redactor",
+  "source": "https://microsoft.github.io/presidio/",
+  "url": "https://gitlab.com/flywheel-io/scientific-solutions/gears/presidio-image-redactor",
+  "version": "0.1.3_nacc"
+}

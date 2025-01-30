@@ -1,0 +1,44 @@
+{
+  "label": "default_presidio_form",
+  "viewer": "OHIF",
+  "parent": {
+    "type": "site",
+    "id": "string"
+  },
+  "form": {
+    "studyForm": {
+      "components": [
+        {
+          "label": "-----Image Redaction Human in the Loop-----",
+          "key": "classifier",
+          "required": false,
+          "type": "radio",
+          "values": []
+        },
+        {
+          "label": "Were all PHI entities captured correctly?",
+          "key": "classificationTrue",
+          "required": true,
+          "type": "radio",
+          "values": [
+            {
+              "value": "yes",
+              "label": "Yes"
+            },
+            {
+              "value": "no",
+              "label": "No",
+              "directive": "Using the annotation feature, draw a rectangle around the missed PHI entity.\nIf annotations are incorrectly applied to an entity, remove over-redacted annotations.",
+              "requireMeasurements": [
+                "phi_entity"
+              ],
+              "measurementTools": [
+                "RectangleRoi"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

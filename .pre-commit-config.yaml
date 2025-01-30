@@ -1,0 +1,37 @@
+repos:
+  - repo: https://gitlab.com/flywheel-io/tools/etc/qa-ci
+    rev: 3218fd46
+    hooks:
+      - id: poetry_export
+      - id: gearcheck
+      - id: hadolint
+        args:
+          [
+            "--ignore",
+            "DL3015",
+            "--ignore",
+            "DL3008",
+            "--ignore",
+            "DL3009",
+            "--ignore",
+            "DL3059",
+          ]
+      - id: jsonlint
+      - id: linkcheck
+      - id: markdownlint
+      - id: yamllint
+      - id: ruff
+        args:
+          [
+            "--config",
+            "pyproject.toml",
+            "--ignore",
+            "PLR0913",
+            "--ignore",
+            "PLE1205",
+            "--ignore",
+            "PLR0912",
+          ]
+      - id: ruff_format
+      - id: ruff_tests
+      - id: pytest
