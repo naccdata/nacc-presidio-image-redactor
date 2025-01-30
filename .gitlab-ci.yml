@@ -1,0 +1,14 @@
+include:
+  - project: flywheel-io/tools/etc/qa-ci
+    ref: 3218fd46
+    file: ci/gear.yml
+
+variables:
+  PYTEST_COV_FAIL_UNDER: 0 # Set pytest coverage to 0
+  DEBUG: "" # Set debug mode to print out executed command on qa-ci
+  PUBLISH_POETRY: "" # Set to true to allow CI to publish package to PYPI
+  QA_CI_REF: 3218fd46
+
+test:gear:
+  # override the extends of test:gear to use a larger runner:
+  extends: [.test:gear, .gitlab-runner-large]

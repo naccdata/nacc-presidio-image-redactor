@@ -1,0 +1,4 @@
+input/
+presidio-image-redactor*
+config.json
+run.sh

@@ -1,0 +1,21 @@
+{
+  "assignee": "",
+  "parent": {
+    "id": "",
+    "type": "file",
+    "version": 0
+  },
+  "status": "Todo",
+  "form_id": "",
+  "viewer": "OHIF",
+  "viewer_config_id": "",
+  "info": {},
+  "config_overrides": {},
+  "task_type": "R",
+  "batch_number": 0,
+  "item_number": 0,
+  "protocol_id": "",
+  "due_date": "",
+  "filters": [],
+  "tags": []
+}

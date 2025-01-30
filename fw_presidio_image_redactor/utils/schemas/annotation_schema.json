@@ -1,0 +1,64 @@
+{
+  "_id": "",
+  "origin": {
+    "type": "user",
+    "id": "maxthorpe@flywheel.io"
+  },
+  "task_id": "",
+  "parents": null,
+  "data": {
+    "_id": "",
+    "toolType": "RectangleRoi",
+    "uuid": "",
+    "StudyInstanceUID": "",
+    "SeriesInstanceUID": "",
+    "SOPInstanceUID": "",
+    "frameIndex": 0,
+    "lesionNamingNumber": 1,
+    "location": "phi_entity",
+    "flywheelOrigin": {},
+    "measurementNumber": 1,
+    "imagePath": "",
+    "handles": {
+      "start": {
+        "x": 0,
+        "y": 0,
+        "highlight": true,
+        "active": false
+      },
+      "end": {
+        "x": 0,
+        "y": 0,
+        "highlight": true,
+        "active": false,
+        "moving": false
+      },
+      "textBox": {
+        "x": 0,
+        "y": 0,
+        "boundingBox": {
+          "width": 150,
+          "height": 50,
+          "left": 0,
+          "top": 0
+        },
+        "active": false,
+        "hasMoved": false,
+        "movesIndependently": false,
+        "drawnIndependently": true,
+        "allowedOutsideImage": true,
+        "hasBoundingBox": true
+      },
+      "initialRotation": 0
+    },
+    "visible": true,
+    "active": true,
+    "color": "rgba(255,0,0,0.5)",
+    "invalidated": false,
+    "PatientID": null,
+    "userId": null,
+    "sliceNumber": 0,
+    "timepointId": "TimepointId",
+    "unit": "SUV"
+  }
+}

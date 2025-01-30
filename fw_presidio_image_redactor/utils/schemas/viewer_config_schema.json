@@ -1,0 +1,66 @@
+{
+  "name": "default_presidio_viewer_config",
+  "config": {
+    "showStudyList": false,
+    "contourUnique": false,
+    "allowDraft": true,
+    "automatedLabelling": true,
+    "hideFreehandVertex": true,
+    "hideROIOutput": true,
+    "hideMeasurementOutput": true,
+    "defaultCircleDiameter": 10,
+    "enableSegmentationPanel": true,
+    "timerOn": true,
+    "timerVisible": false,
+    "useRadiologyOrientationForNiftiOverDicomOverlay": true,
+    "evaluatePerformance": true,
+    "saveAsDicomSeg": true,
+    "hotKeys": [
+      {
+        "commandName": "performanceTracker",
+        "label": "Log performance",
+        "keys": [
+          "ctrl+shift+l"
+        ]
+      },
+      {
+        "commandName": "clearPerformanceLog",
+        "label": "Clear log",
+        "keys": [
+          "ctrl+shift+e"
+        ]
+      }
+    ],
+    "mouseActions": [
+      {
+        "toolName": "Zoom",
+        "button": "middle"
+      },
+      {
+        "toolName": "Pan",
+        "button": "right"
+      },
+      {
+        "toolName": "Wwwc",
+        "button": "left"
+      },
+      {
+        "toolName": "StackScrollMouseWheel",
+        "button": "wheel"
+      }
+    ],
+    "labels": [
+      {
+        "label": "PHI Entity",
+        "value": "phi_entity",
+        "color": "rgba(255,0,0,0.5)"
+      },
+      {
+        "label": "Missed Entities",
+        "value": "missed_entities",
+        "color": "rgba(0,255,222,0.5)"
+      }
+    ]
+  },
+  "viewer": "OHIF"
+}
