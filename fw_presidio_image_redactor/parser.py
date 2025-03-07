@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import List, Tuple, Union
 
 from flywheel_gear_toolkit import GearToolkitContext
+
 from .utils.parameter_store.parameter_store import ParameterStore
 
 log = logging.getLogger(__name__)
@@ -63,7 +64,6 @@ def parse_config(
 
     assignees = context.config.get("Assignees", None)
     file_id = context.get_input_file_object("image_file").get("file_id")
-    validated_assignees = validate_assignees(context, assignees, file_id)
 
     try:
         operating_mode = context.config.get("Baseline Operating Mode", None)
@@ -74,6 +74,10 @@ def parse_config(
     except ValueError as e:
         log.error(e)
         sys.exit(1)
+
+    validated_assignees = None
+    if operating_mode == "Detection+ReaderTasks":
+        validated_assignees = validate_assignees(context, assignees, file_id)
 
     file_path = context.get_input_path("image_file")
     prior_scan_inputs = {"bbox_coords": context.get_input_path("bbox_coords")}

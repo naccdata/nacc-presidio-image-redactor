@@ -20,3 +20,7 @@ def get_pretrained_transformer_model(model_path: str = "obi/deid_roberta_i2b2") 
     # Instantiate to make sure it's downloaded during installation and not runtime
     AutoTokenizer.from_pretrained(transformers_model)
     AutoModelForTokenClassification.from_pretrained(transformers_model)
+
+
+if __name__ == "__main__":
+    get_pretrained_transformer_model()

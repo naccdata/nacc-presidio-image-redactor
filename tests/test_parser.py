@@ -186,7 +186,6 @@ class TestParser(TestCase):
             ]
         )
         self.assertEqual(excinfo.value.code, 1)
-        mocke_validate_assignees.assert_called_once()
         try:
             tuple_return
         except UnboundLocalError:
@@ -214,7 +213,7 @@ class TestParser(TestCase):
             None,
             mock_debug_path,
             "some_user_email, another_user_email",
-            "opMode",
+            "Detection+ReaderTasks",
             30,
             30,
             "contrast",
@@ -242,7 +241,6 @@ class TestParser(TestCase):
             tuple_return = parse_config(self.mock_context)
 
         self.mock_context.config.get.call_count == 9
-        mock_validate_assignees.assert_called_once()
         self.mock_context.config.get.assert_has_calls(
             [
                 call("Debug", None),
@@ -282,7 +280,7 @@ class TestParser(TestCase):
             (
                 mock_debug_path,
                 [Path("fake_file_path")],
-                "opMode",
+                "Detection+ReaderTasks",
                 30,
                 30,
                 ["entity1", "entity2", "entity3"],

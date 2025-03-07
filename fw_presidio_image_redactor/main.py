@@ -151,7 +151,7 @@ def run(
 
     # Redact All Text
     elif operating_mode == "RedactAllText":
-        log.info("Dynamic Redaction flag encountered...")
+        log.info("Complete redaction flag encountered...")
         engine.redact_all_text = True
 
         # Not checking for prior scan inputs from user since redacting all text

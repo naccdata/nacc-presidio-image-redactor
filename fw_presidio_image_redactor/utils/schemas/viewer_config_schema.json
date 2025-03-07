@@ -9,28 +9,12 @@
     "hideROIOutput": true,
     "hideMeasurementOutput": true,
     "defaultCircleDiameter": 10,
-    "enableSegmentationPanel": true,
+    "enableSegmentationPanel": false,
     "timerOn": true,
     "timerVisible": false,
     "useRadiologyOrientationForNiftiOverDicomOverlay": true,
     "evaluatePerformance": true,
     "saveAsDicomSeg": true,
-    "hotKeys": [
-      {
-        "commandName": "performanceTracker",
-        "label": "Log performance",
-        "keys": [
-          "ctrl+shift+l"
-        ]
-      },
-      {
-        "commandName": "clearPerformanceLog",
-        "label": "Clear log",
-        "keys": [
-          "ctrl+shift+e"
-        ]
-      }
-    ],
     "mouseActions": [
       {
         "toolName": "Zoom",
@@ -60,7 +44,23 @@
         "value": "missed_entities",
         "color": "rgba(0,255,222,0.5)"
       }
-    ]
+    ],
+    "toolbar": {
+      "Annotate": {
+        "only": [
+          "Rectangle"
+        ]
+      },
+      "Segment": {
+        "only": []
+      },
+      "Segmentation": {
+        "only": []
+      },
+      "Download": {
+        "only": []
+      }
+    }
   },
   "viewer": "OHIF"
 }
