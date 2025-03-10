@@ -1,5 +1,5 @@
-FROM flywheel/python@sha256:34bf70c2e458b8c61a472730a9c201ee7412e87c5c87265eea75643c73837565
-# flywheel/python:3.10-debian-build
+FROM flywheel/python:3.10-debian-build
+
 ENV FLYWHEEL="/flywheel/v0"
 WORKDIR ${FLYWHEEL}
 

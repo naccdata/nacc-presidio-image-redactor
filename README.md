@@ -152,11 +152,9 @@ MIT
   PHONE_NUMBER,ZIP,USERNAME,EMAIL
 
 - API Key Path
-  - __Name__: apikey_path
+  - __Name__: apikey_path_prefix
   - __Type__: string
-  - __Description__: Path for gear to find API credentials in docker environment.
-  Provide when running gear as a gear rule to enable creation of reader tasks
-  through Gear Rules.
+  - __Description__: Path of API key for ParameterStore to pull API key.
   - __Optional__: True 
 
   
