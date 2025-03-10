@@ -47,7 +47,6 @@ from .utils.bbox_fuser import BboxFuser
 
 # Flywheel custom imports
 from .utils.easy_ocr import EasyOCR
-from .utils.pretrained_transformer import get_pretrained_transformer_model
 from .utils.transformer_recognizer import TransformersRecognizer
 
 log = logging.getLogger(__name__)
@@ -56,7 +55,7 @@ log = logging.getLogger(__name__)
 DEFAULT_PADDING_SIZE = 25  # Padding applied to all sides of image
 DEFAULT_CROP_RATIO = 0.75  # Crop ratio for image processing
 TRANSFORMERS_CONFIG_FILE = "fw_presidio_image_redactor/nlp_configs/transformers.yaml"
-MODEL_PATH = "obi/deid_roberta_i2b2"
+MODEL_PATH = "fw_presidio_image_redactor/nlp_configs/obi_deid_roberta_i2b2"
 DEFAULT_PRESIDIO_ENTITIES = [
     "AGE",
     "ZIP",
@@ -146,7 +145,6 @@ class FwScanRedactEngine(DicomImageRedactorEngine):
         """Initializes image analyzer engine with Flywheel specific methods."""
 
         # Set up NLP engine
-        get_pretrained_transformer_model()  # ToDo: check influence on model operation
         provider = NlpEngineProvider(
             conf_file=TRANSFORMERS_CONFIG_FILE,
         )
@@ -404,6 +402,9 @@ class FwScanRedactEngine(DicomImageRedactorEngine):
                 bbox_coords_dict[str(image_path.stem)] = bbox_coords  # bbox_coords
                 annotation_coords[instance_metadata["imagePath"]] = bbox_coords
 
+                # Apply common bboxes
+                self.apply_common_bboxes(annotation_coords)
+
             input_file_count += 1
             if input_file_count in file_markers:
                 file_progress_percent = file_markers.get(input_file_count)
@@ -416,9 +417,6 @@ class FwScanRedactEngine(DicomImageRedactorEngine):
                 )
                 with open(debug_analyzer_results, "w") as fp:
                     yaml.dump(analyzer_results, fp, sort_keys=False)
-
-        # Apply common bboxes
-        self.apply_common_bboxes(annotation_coords)
 
         phi_found = any(
             len(phi_check) >= 1 for phi_check in list(analyzer_dict.values())
@@ -956,13 +954,13 @@ class FwScanRedactEngine(DicomImageRedactorEngine):
 
         """
         if self.redact_all_text:
-            # Only want to keep ImageRecognizerResults w/ highest score
+            # Keep all results
             unique_bboxes = defaultdict(lambda: None)
 
             # Iterate through the results and update the dictionary
             for index, word in enumerate(ocr_result["text"]):
                 bbox = ImageRecognizerResult(
-                    f"OCR Result: {index+1}",
+                    f"OCR Result: {index + 1}",
                     0,  # Dummy start index value
                     1,  # Dummy end index value
                     ocr_result["conf"][index],  # ocr confidence score
@@ -971,7 +969,7 @@ class FwScanRedactEngine(DicomImageRedactorEngine):
                     ocr_result["width"][index],
                     ocr_result["height"][index],
                 )
-                key = f"OCR Result: {index+1}"
+                key = f"OCR Result: {index + 1}"
                 unique_bboxes[key] = bbox
 
         else:

@@ -4,13 +4,13 @@ models:
     model_name:
       spacy: en_core_web_lg
       # obi/deid_roberta_i2b2
-      transformers: .cache/huggingface/hub/models/obi_deid_roberta_i2b2
+      transformers: fw_presidio_image_redactor/nlp_configs/obi_deid_roberta_i2b2
 ner_model_configuration:
   labels_to_ignore:
     - O
-  aggregation_strategy: simple  # "simple", "first", "average", "max"
+  aggregation_strategy: simple # "simple", "first", "average", "max"
   stride: 8
-  alignment_mode: expand  # "strict", "contract", "expand"
+  alignment_mode: expand # "strict", "contract", "expand"
   model_to_presidio_entity_mapping:
     PER: PERSON
     PERSON: PERSON

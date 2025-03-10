@@ -6,7 +6,7 @@ presidio entities
 """
 
 BERT_DEID_CONFIGURATION = {
-    "DEFAULT_MODEL_PATH": ".cache/huggingface/hub/models/obi_deid_roberta_i2b2",  # obi/deid_roberta_i2b2
+    "DEFAULT_MODEL_PATH": "fw_presidio_image_redactor/nlp_configs/obi_deid_roberta_i2b2",
     "LABELS_TO_IGNORE": ["O"],
     "DEFAULT_EXPLANATION": "Identified as {} by the obi/deid_roberta_i2b2 NER model",
     "SUB_WORD_AGGREGATION": "simple",

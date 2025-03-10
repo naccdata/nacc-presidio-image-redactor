@@ -62,32 +62,53 @@
   "custom": {
     "flywheel": {
       "classification": {
-        "function": ["Curation"],
-        "modality": ["Any"],
-        "organ": ["Any"],
-        "species": ["Human"],
-        "therapeutic_area": ["Any"]
+        "function": [
+          "Curation"
+        ],
+        "modality": [
+          "Any"
+        ],
+        "organ": [
+          "Any"
+        ],
+        "species": [
+          "Human"
+        ],
+        "therapeutic_area": [
+          "Any"
+        ]
       },
       "show-job": true,
       "suite": "Curation"
     },
     "gear-builder": {
       "category": "converter",
-      "image": "flywheel/nacc-presidio-image-redactor:0.1.3_nacc"
+      "image": "flywheel/nacc-presidio-image-redactor:0.1.4"
     }
   },
   "description": "This gear utilizes Mircrosoft's open source Presidio SDK to scan images for potential Personal Identifiable Information (PII), report on PII findings, and redact PII contained within pixel data.",
   "environment": {
     "FLYWHEEL": "/flywheel/v0",
-    "GPG_KEY": "E3FF2839C048B25C084DEBE9B26995E310250568",
+    "GPG_KEY": "A035C8C19219BA821ECEA86B64E628F8D684696D",
     "LANG": "C.UTF-8",
-    "PATH": "/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+    "PATH": "/venv/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/bin",
     "PWD": "/flywheel/v0",
     "PYTHON_GET_PIP_SHA256": "dfe9fd5c28dc98b5ac17979a953ea550cec37ae1b47a5116007395bfacff2ab9",
     "PYTHON_GET_PIP_URL": "https://github.com/pypa/get-pip/raw/dbf0c85f76fb6e1ab42aa672ffca6f0a675d9ee4/public/get-pip.py",
     "PYTHON_PIP_VERSION": "23.0.1",
     "PYTHON_SETUPTOOLS_VERSION": "58.1.0",
-    "PYTHON_VERSION": "3.9.19"
+    "PYTHON_VERSION": "3.10.16",
+    "PYTHON_SHA256": "bfb249609990220491a1b92850a07135ed0831e41738cf681d63cf01b2a8fbd1",
+    "COMMIT_SHA": "fea92b8d",
+    "COMMIT_REF": "main",
+    "BUILD_TIME": "2025-02-15T07:41:16Z",
+    "CI_JOB_URL": "https://gitlab.com/flywheel-io/tools/img/python/-/jobs/9148655887",
+    "EGET_BIN": "/opt/bin",
+    "VIRTUAL_ENV": "/venv",
+    "UV_NO_CACHE": "1",
+    "PYTHONPATH": "/venv/lib/python/site-packages",
+    "TZ": "UTC",
+    "EDITOR": "micro"
   },
   "inputs": {
     "api-key": {
@@ -99,7 +120,9 @@
       "description": "Json containing the bounding box coordinates of a previous scanning run.",
       "optional": true,
       "type": {
-        "enum": ["source code"]
+        "enum": [
+          "source code"
+        ]
       }
     },
     "image_file": {
@@ -107,7 +130,10 @@
       "description": "A dicom file or zipped dicom series.",
       "optional": false,
       "type": {
-        "enum": ["archive", "dicom"]
+        "enum": [
+          "archive",
+          "dicom"
+        ]
       }
     }
   },
@@ -117,5 +143,5 @@
   "name": "nacc-presidio-image-redactor",
   "source": "https://microsoft.github.io/presidio/",
   "url": "https://gitlab.com/flywheel-io/scientific-solutions/gears/presidio-image-redactor",
-  "version": "0.1.3_nacc"
+  "version": "0.1.4"
 }

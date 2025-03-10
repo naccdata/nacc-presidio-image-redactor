@@ -41,16 +41,15 @@ class ReaderTaskCreator:
                     user_type,
                     user_id,
                 )
+        elif bot_key:
+            self.username = self.sdk_client.get_current_user().id
         else:
-            if bot_key:
-                self.username = self.sdk_client.get_current_user().id
-            else:
-                gear_rules = self.sdk_client.get_project_rules(self.project_id)
-                for rule in gear_rules:
-                    job_gear_id = job_run.get("gear_id", None)
-                    if rule.get("gear_id", None) == job_gear_id:
-                        last_modified_entry = rule.get("last_modified_by")
-                        self.username = last_modified_entry.get("id")
+            gear_rules = self.sdk_client.get_project_rules(self.project_id)
+            for rule in gear_rules:
+                job_gear_id = job_run.get("gear_id", None)
+                if rule.get("gear_id", None) == job_gear_id:
+                    last_modified_entry = rule.get("last_modified_by")
+                    self.username = last_modified_entry.get("id")
 
     def create_form(
         self,

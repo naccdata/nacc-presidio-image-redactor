@@ -1,5 +1,5 @@
-FROM python@sha256:44122e46edb1c3ae2a144778db3e01c78b6de3af20ddcc38d43032decffb00cf
-# (python:3.9.19-slim-bookworm, linux/amd64)
+FROM flywheel/python:3.10-debian-build
+
 ENV FLYWHEEL="/flywheel/v0"
 WORKDIR ${FLYWHEEL}
 
@@ -27,8 +27,9 @@ RUN pip install --no-cache-dir .
 
 # Copy the list of packages or directly install huggingface_hub
 ARG REPO_ID="obi/deid_roberta_i2b2"
-ARG LOCAL_DIR_PATH="$FLYWHEEL/.cache/huggingface/hub/models/obi_deid_roberta_i2b2"
-RUN python -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='$REPO_ID',local_dir='$LOCAL_DIR_PATH')"
+ARG LOCAL_DIR_PATH="$FLYWHEEL/fw_presidio_image_redactor/nlp_configs/obi_deid_roberta_i2b2"
+ARG REV_VER="78f2152eb93ddd817290ce8dbe46f1a6685e09fc"
+RUN python -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='$REPO_ID',revision='${REV_VER}',local_dir='$LOCAL_DIR_PATH')"
 
 # Configure entrypoint
 RUN chmod a+x $FLYWHEEL/run.py
