@@ -402,9 +402,6 @@ class FwScanRedactEngine(DicomImageRedactorEngine):
                 bbox_coords_dict[str(image_path.stem)] = bbox_coords  # bbox_coords
                 annotation_coords[instance_metadata["imagePath"]] = bbox_coords
 
-                # Apply common bboxes
-                self.apply_common_bboxes(annotation_coords)
-
             input_file_count += 1
             if input_file_count in file_markers:
                 file_progress_percent = file_markers.get(input_file_count)
@@ -418,6 +415,11 @@ class FwScanRedactEngine(DicomImageRedactorEngine):
                 with open(debug_analyzer_results, "w") as fp:
                     yaml.dump(analyzer_results, fp, sort_keys=False)
 
+        # Apply common bboxes
+        #TODO: add detailed description of why this is accurate for 
+        #      non-multi-frame volume. 
+        self.apply_common_bboxes(annotation_coords)
+        
         phi_found = any(
             len(phi_check) >= 1 for phi_check in list(analyzer_dict.values())
         )
