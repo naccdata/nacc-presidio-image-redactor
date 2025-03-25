@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fw-presidio-image-redactor"
-version = "0.1.3"
+version = "0.1.5"
 description = "{{description}}"
 authors = ["Flywheel <support@flywheel.io>"]
 readme = "README.md"
