@@ -83,7 +83,7 @@
     },
     "gear-builder": {
       "category": "converter",
-      "image": "flywheel/nacc-presidio-image-redactor:0.1.5-rc1"
+      "image": "flywheel/nacc-presidio-image-redactor:0.1.5"
     }
   },
   "description": "This gear utilizes Mircrosoft's open source Presidio SDK to scan images for potential Personal Identifiable Information (PII), report on PII findings, and redact PII contained within pixel data.",
@@ -143,5 +143,5 @@
   "name": "nacc-presidio-image-redactor",
   "source": "https://microsoft.github.io/presidio/",
   "url": "https://gitlab.com/flywheel-io/scientific-solutions/gears/presidio-image-redactor",
-  "version": "0.1.5-rc1"
+  "version": "0.1.5"
 }
